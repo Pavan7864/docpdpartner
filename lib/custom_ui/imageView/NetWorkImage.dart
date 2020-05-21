@@ -21,7 +21,7 @@ class AppImageImage extends StatelessWidget{
 //      String newUrl=arrimage[0];
 
       try {
-        return Container(child: Image.network(ApiClient.imageBaseUrl+url,fit: fit,),margin: mergin,padding: padding,);
+        return Container(child: Image.network(url,fit: fit,),margin: mergin,padding: padding,);
       } catch (e) {
 
       }

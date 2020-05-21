@@ -100,5 +100,9 @@ class HistoryProvider extends ChangeNotifier{
     notifyListeners();
   }
 
+  void removeAt(int index) {
+    arrMissed.removeAt(index);
+  }
+
 
 }

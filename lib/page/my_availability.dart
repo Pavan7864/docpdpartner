@@ -139,6 +139,9 @@ class _MyAvailability extends State<MyAvailability> {
                               children: <Widget>[
                                 Expanded(child: InkWell(
                                   onTap:(){
+                                    if(model.myAvailability==1 && (model.oneDay==index || model.oneDay==-1)){
+                                       model.isSelect(index);
+                                    }
                                     if(day.isSelected)
                                       model.selectTime(context, index, true);
                                   },
@@ -150,6 +153,9 @@ class _MyAvailability extends State<MyAvailability> {
                                 )),
                                 Expanded(child: InkWell(
                                   onTap:(){
+                                    if(model.myAvailability==1 && (model.oneDay==index || model.oneDay==-1)){
+                                      model.isSelect(index);
+                                    }
                                     if(day.isSelected)
                                        model.selectTime(context, index, false);
                                   },

@@ -1,6 +1,7 @@
 import 'package:docpdpartner/call/jitisi.dart';
 import 'package:docpdpartner/custom_ui/imageView/CircleImageView.dart';
 import 'package:docpdpartner/custom_ui/imageView/ImageViewSize.dart';
+import 'package:docpdpartner/custom_ui/imageView/NetWorkImage.dart';
 import 'package:docpdpartner/custom_ui/imageView/TextView.dart';
 import 'package:docpdpartner/custom_ui/imageView/dotted_border.dart';
 import 'package:docpdpartner/model/appointment_model.dart';
@@ -10,6 +11,7 @@ import 'package:docpdpartner/model/medicine_model.dart';
 import 'package:docpdpartner/model/symptomp_model.dart';
 import 'package:docpdpartner/option_model.dart';
 import 'package:docpdpartner/page/diagnosis_page.dart';
+import 'package:docpdpartner/page/dialog/ZoomImage.dart';
 import 'package:docpdpartner/page/investigation%20_container.dart';
 import 'package:docpdpartner/page/medicine_page.dart';
 import 'package:docpdpartner/page/popup/bp_dialog.dart';
@@ -36,6 +38,7 @@ class _PatientOtherDetails extends State<PatientOtherDetails> {
   Jitisi _callKit = Jitisi();
 
   PatientAppointmentProvider _app;
+   List<String> imageArr=[];
 
   @override
   void initState() {
@@ -50,6 +53,10 @@ class _PatientOtherDetails extends State<PatientOtherDetails> {
        final  Map<String, Object> data = ModalRoute.of(context).settings.arguments;
        appointmentModel=AppointmentModel.fromJSON(data);
        _app=PatientAppointmentProvider(context);
+       if(!AppUtils.isEmpty(appointmentModel.MedicalHistory)){
+         imageArr=appointmentModel.MedicalHistory.split(",");
+       }
+
        return WillPopScope(
          // ignore: missing_return
          onWillPop: (){
@@ -338,6 +345,32 @@ class _PatientOtherDetails extends State<PatientOtherDetails> {
 
                           ),
 
+
+                          imageArr.length==0?Container():Container(
+                            height: 100,
+                          margin: const EdgeInsets.only(right: 15,bottom: 10,left: 15),
+                            child: Row(
+                              children: <Widget>[
+                                Expanded(child: imageArr.length>0?InkWell(
+                                     onTap:(){
+                                       Navigator.push(context, MaterialPageRoute(builder: (context) =>ZoomImage(imageArr[0])));
+
+                                     },
+                                    child: AppImageImage(imageArr[0],'assets/icon/placeholder.png')):Container()),
+                                Expanded(child: imageArr.length>1?InkWell(
+                                    onTap:(){
+                                      Navigator.push(context, MaterialPageRoute(builder: (context) =>ZoomImage(imageArr[1])));
+
+                                    },child: AppImageImage(imageArr[1],'assets/icon/placeholder.png')):Container()),
+                                Expanded(child: imageArr.length>2?InkWell(
+                                    onTap:(){
+                                      Navigator.push(context, MaterialPageRoute(builder: (context) =>ZoomImage(imageArr[2])));
+
+                                    },child: AppImageImage(imageArr[2],'assets/icon/placeholder.png')):Container()),
+                              ],
+                            ),
+                          ),
+
                           TextView('Medical History',size: 16,weight: FontWeight.w500, colors: Theme.of(context).hintColor,
                             mergin: const EdgeInsets.only(top: 10,bottom: 7,left: 15),),
 
@@ -346,6 +379,7 @@ class _PatientOtherDetails extends State<PatientOtherDetails> {
 
                             child: TextFormField(
                               textInputAction: TextInputAction.done,
+                              controller: TextEditingController(text: model.history??''),
                               maxLines: 3,
                               decoration: InputDecoration(
                                   border: OutlineInputBorder(),
@@ -861,6 +895,7 @@ class _PatientOtherDetails extends State<PatientOtherDetails> {
 
                             child: TextFormField(
                               textInputAction: TextInputAction.done,
+                              controller: TextEditingController(text: model.notes??''),
                               maxLines: 3,
                               decoration: InputDecoration(
                                   border: OutlineInputBorder(),

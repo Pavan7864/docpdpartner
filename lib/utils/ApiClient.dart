@@ -9,7 +9,7 @@ import 'dart:io' show Platform;
 
 class ApiClient{
    static bool isUpdated=false;
-  static String BASE_URL="https://services.docopd.com/";
+  static String BASE_URL="https://services.docopd.com";
   static String imageBaseUrl="https://services.docopd.com/";
   static String API_URL="$BASE_URL/api/";
 
@@ -33,6 +33,7 @@ class ApiClient{
   static String paGetDoctorHistory='paGetDoctorHistory';
   static String paSetDoctorAvailability='paSetDoctorAvailability';
   static String paGetDoctorAvailability='paGetDoctorAvailability';
+  static String paDoctorImageUpload='paDoctorImageUpload';
 
 
 

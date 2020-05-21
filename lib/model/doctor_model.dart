@@ -37,12 +37,15 @@ class DoctorModel{
   String MBBSCompletionDate='';
   String Specialization='';
   String hospitalId='';
+  String dob='';
+  String signature;
+  String licences;
 
   DoctorModel({this.doctorCustomId,this.doctorID,this.MobileNo,this.hospitalName,this.addressLine1,this.addressLine2,this.hos_pic_url,this.HospitalLogoPath,this.HospitalUrl,
   this.HighesQualification,this.TotalCallsToday,this.DocAuthkey,this.MissedCallsToday,this.T2DcallAssignmentMonthally,this.TotalCallsMonthally,
   this.MissedCallsMonthally,this.FirstName,this.LastName,this.Description,this.TotalExperence,this.Country,this.State,this.City,this.Pic,this.ZipCode,
   this.Operator,this.Column1,this.Column2,this.T2DcallAssignmentToday,this.gender,this.DocCreateddate,this.AddressLine1,
-    this.AddressLine2,this.MBBSCompletionDate,this.Specialization,this.hospitalId});
+    this.AddressLine2,this.signature,this.licences,this.MBBSCompletionDate,this.Specialization,this.hospitalId,this.dob});
 
    factory DoctorModel.fromJSON(Map<String,dynamic> map){
      return DoctorModel(
@@ -93,6 +96,9 @@ class DoctorModel{
                   MBBSCompletionDate: map.containsKey('MBBSCompletionDate')?map['MBBSCompletionDate']:'',
                   Specialization: map.containsKey('Specialization')?map['Specialization']:'',
                    hospitalId: map.containsKey('hospitalId')?map['hospitalId']:'',
+                    dob: map.containsKey('dob')?map['dob']:'',
+                   licences: map.containsKey('licences')?map['licences']:'',
+                   signature: map.containsKey('signature')?map['signature']:'',
         );
   }
 
@@ -108,6 +114,8 @@ class DoctorModel{
           "DocAuthkey": DocAuthkey,
           "FirstName": FirstName,
           "LastName": LastName,
+          "licences": licences,
+          "signature": signature,
           "MobileNo": MobileNo,
           "HighesQualification": HighesQualification,
           "TotalExperence": TotalExperence,
@@ -123,13 +131,14 @@ class DoctorModel{
           "Column1": Column1,
           "Column2": Column2,
           "Column3": doctorCustomId,
-          "Gender": gender,
+          "Gender": gender.toLowerCase(),
           "DocCreateddate": DocCreateddate,
           "AddressLine1": AddressLine1,
           "AddressLine2": AddressLine2,
           "MBBSCompletionDate": MBBSCompletionDate,
           "Specialization": Specialization,
           "hospitalId": hospitalId,
+          "dob": dob,
         };
 
         return map;

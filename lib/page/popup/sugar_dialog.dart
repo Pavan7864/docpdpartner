@@ -220,7 +220,7 @@ class _SugarDialog extends State<SugarDialog>  {
                  )),
 
                  Container(
-                   height: 150,
+                   height: 100,
                  )
 
                ],

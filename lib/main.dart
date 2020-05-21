@@ -113,13 +113,14 @@ var themeData = ThemeData(
 
 
 var themeDataDark = ThemeData(
-    fontFamily: 'Roboto',
-    primaryColor: Colors.white,
-    brightness: Brightness.dark,
-    backgroundColor: Colors.black,
-    accentColor: Colors.white,
-    dividerColor: Colors.white,
-    hintColor: Color(0xffffffff),
+  fontFamily: 'Roboto',
+  primaryColor: Colors.black,
+  brightness: Brightness.light,
+  backgroundColor: Colors.white,
+  accentColor: Color(0xff666666),
+  dividerColor: Color(0xff00ae99),
+  hintColor: Color(0xff797979),
+
 );
 
 

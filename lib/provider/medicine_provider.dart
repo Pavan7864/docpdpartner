@@ -12,7 +12,7 @@ class MedicineProvider extends ChangeNotifier{
    List<MedicineModel> arrSelectedMedicine=[];
    bool isLoad=false;
    int type=1;
-   String medicineType='Generic';
+   String medicineType='Allopathy';
    GlobalKey<ScaffoldState> gState;
 
    MedicineProvider(BuildContext context,List<MedicineModel> list,GlobalKey<ScaffoldState> state){

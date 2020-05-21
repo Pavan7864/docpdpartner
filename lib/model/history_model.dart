@@ -8,8 +8,12 @@ class HistoryModel{
   final String serviceType;
   final String status;
   final String pdfurl;
+  final String id;
+  final String CustomId;
+  final String MeetingID;
+  final String patientId;
 
-  HistoryModel({this.userName,this.userPic,this.reason,this.bookingDate,this.bookingTime,this.serviceType,this.status,this.pdfurl});
+  HistoryModel({this.userName,this.patientId,this.CustomId,this.MeetingID,this.userPic,this.reason,this.bookingDate,this.bookingTime,this.serviceType,this.status,this.pdfurl,this.id});
 
   factory HistoryModel.fromJSON(Map<String,dynamic> map){
     return HistoryModel(
@@ -21,6 +25,10 @@ class HistoryModel{
         serviceType:map['ServiceType'],
         status:map['Status'],
         pdfurl:map['pdfurl'],
+        id:map['SID/BookingID'].toString(),
+      CustomId:map.containsKey('CustomId')?map['CustomId'].toString():'',
+      MeetingID:map.containsKey('MeetingID')?map['MeetingID'].toString():'',
+      patientId:map.containsKey('patientId')?map['patientId'].toString():'',
     );
   }
 

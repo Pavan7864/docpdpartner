@@ -26,10 +26,11 @@ class AppointmentModel{
    String id;
    String customId;
    String patientId;
+   String MedicalHistory;
 
 
 
-   AppointmentModel({this.patientId,this.id,this.customId,this.feed,this.inch,this.kilo,this.gram,this.ppReading,this.sugarFasting,this.bpSystolic,this.bpDiastolic,this.userName,this.userPic,this.requestType,this.appoinmentReason,this.appoinmentDate,this.bookingTime,this.pending,this.prescriptionID,this.meetingID});
+   AppointmentModel({this.patientId,this.MedicalHistory,this.id,this.customId,this.feed,this.inch,this.kilo,this.gram,this.ppReading,this.sugarFasting,this.bpSystolic,this.bpDiastolic,this.userName,this.userPic,this.requestType,this.appoinmentReason,this.appoinmentDate,this.bookingTime,this.pending,this.prescriptionID,this.meetingID});
 
    factory AppointmentModel.fromJSON(Map<String,dynamic> map){
       return AppointmentModel(
@@ -53,6 +54,7 @@ class AppointmentModel{
          feed:map.containsKey('feed')?map['feed'].toString():'',
          inch:map.containsKey('inch')?map['inch'].toString():'',
          patientId:map.containsKey('patientId')?map['patientId'].toString():'',
+         MedicalHistory:map.containsKey('MedicalHistory')?map['MedicalHistory'].toString():'',
       );
    }
 
@@ -75,6 +77,7 @@ class AppointmentModel{
           "bpSystolic": bpSystolic,
           "ppReading": ppReading,
           "sugarFasting": sugarFasting,
+          "MedicalHistory": MedicalHistory,
           "gram": gram,
           "kilo": kilo,
           "feed": feed,

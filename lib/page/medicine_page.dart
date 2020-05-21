@@ -88,18 +88,22 @@ class _MedicineSearch extends State<MedicineSearch> {
                                      isExpanded: true,
                                      value: model.medicineType,
                                      iconEnabledColor: Theme.of(context).accentColor,
-                                     hint: Text('Generic',style: TextStyle(color:Theme.of(context).accentColor,fontWeight: FontWeight.w500,fontSize: 12),),
-                                     items: ['Generic','Allopathy'].map((String value) {
+                                     hint: Text('Allopathy',style: TextStyle(color:Theme.of(context).accentColor,fontWeight: FontWeight.w500,fontSize: 12),),
+                                     items: ['Allopathy','Ayurved','Homeopathy','Generic'].map((String value) {
                                        return new DropdownMenuItem<String>(
                                          value: value,
                                          child: Text(value,style: TextStyle(color:Theme.of(context).primaryColor,fontSize: 12),),
                                        );
                                      }).toList(),
                                      onChanged: (v){
-                                       if(v=='Generic'){
+                                       if(v=='Allopathy'){
                                          model.setMedicineType(v,1);
-                                       }else{
+                                       }else if(v=='Ayurved'){
                                          model.setMedicineType(v,2);
+                                       }else if(v=='Homeopathy'){
+                                         model.setMedicineType(v,3);
+                                       }else{
+                                         model.setMedicineType(v,4);
                                        }
                                      },
                                    ),

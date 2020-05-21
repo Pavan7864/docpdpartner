@@ -5,6 +5,7 @@ import 'package:docpdpartner/custom_ui/imageView/FullImageView.dart';
 import 'package:docpdpartner/custom_ui/imageView/ImageViewSize.dart';
 import 'package:docpdpartner/custom_ui/imageView/TextView.dart';
 import 'package:docpdpartner/main.dart';
+import 'package:docpdpartner/page/dialog/ZoomImage.dart';
 import 'package:docpdpartner/page/dialog/version-check.dart';
 import 'package:docpdpartner/provider/home_provider.dart';
 import 'package:docpdpartner/provider/login_provider.dart';
@@ -52,8 +53,9 @@ class _ProfileMenu extends State<ProfileMenu>{
 
                          ),
                          InkWell(
-                           onTap: (){
-                             Navigator.pushNamed(context, "/EditProfile");
+                           onTap: () async {
+                             var a =await Navigator.pushNamed(context, "/EditProfile");
+                             model.getLatestData();
                            },
                            child: Row(
                              children: <Widget>[
@@ -82,7 +84,11 @@ class _ProfileMenu extends State<ProfileMenu>{
                           crossAxisAlignment: CrossAxisAlignment.center,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
-                            CircleImageView(model.doctor==null?'':model.doctor.Pic!=null?model.doctor.Pic:'https://image.freepik.com/free-photo/doctor-smiling-with-stethoscope_1154-36.jpg',120),
+                            InkWell(  onTap:(){
+                              if(!AppUtils.isEmpty(model.doctor.Pic))
+                                Navigator.push(context, MaterialPageRoute(builder: (context) =>ZoomImage(model.doctor.Pic)));
+
+                            },child: CircleImageView(model.doctor==null?'':model.doctor.Pic,120)),
                             TextView(model.doctor==null?'':model.doctor.LastName==null || model.doctor.FirstName==null?'':model.doctor.LastName==null?model.doctor.FirstName:model.doctor.FirstName+' '+model.doctor.LastName,size: 16,align: TextAlign.center,weight: FontWeight.w500,
                               colors: Theme.of(context).primaryColor, mergin: const EdgeInsets.only(top: 3,bottom: 1),),
                             TextView(model.doctor==null?'':model.doctor.HighesQualification??'',size: 12,align: TextAlign.center,

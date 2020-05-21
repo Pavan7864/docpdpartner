@@ -117,7 +117,7 @@ class _HomePage extends State<HomePage>{
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: <Widget>[
-                                  TextView(model.doctor==null?'':model.doctor.MissedCallsMonthally??'',size: 24,align: TextAlign.center,
+                                  TextView(model.doctor==null?'':model.doctor.MissedCallsMonthally=='null'?'0':model.doctor.MissedCallsMonthally??'',size: 24,align: TextAlign.center,
                                     weight: FontWeight.w700,colors: Colors.red, mergin: const EdgeInsets.only(top: 20,bottom: 1),),
 
                                   Container(

@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:device_id/device_id.dart';
 import 'package:docpdpartner/model/availibality_model.dart';
 import 'package:docpdpartner/model/days_medicine.dart';
+import 'package:docpdpartner/model/language_model.dart';
 import 'package:docpdpartner/option_model.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -22,6 +23,8 @@ class AppUtils{
 
   static bool isEmpty(String value){
     if(value==null){
+      return true;
+    }if(value=='null'){
       return true;
     }else if(value.length==0){
       return true;
@@ -197,6 +200,39 @@ class AppUtils{
     list.add(m4);
     list.add(m5);
     list.add(m6);
+    return list;
+
+  }
+
+  static List<LanguageModel> getLanguage(){
+    List<LanguageModel> list=[];
+    var m=LanguageModel();
+    m.name='Hindi';
+    m.position=0;
+    list.add(m);
+    var m1=LanguageModel();
+    m1.name='English';
+    m1.position=1;
+    list.add(m1);
+    var m2=LanguageModel();
+    m2.name='Bengali';
+    m2.position=2;
+    list.add(m2);
+
+    var m3=LanguageModel();
+    m3.name='Marathi';
+    m3.position=3;
+    list.add(m3);
+
+    var m4=LanguageModel();
+    m4.name='Telugu';
+    m4.position=4;
+    list.add(m4);
+
+    var m5=LanguageModel();
+    m5.name='Punjabi';
+    m5.position=5;
+    list.add(m5);
     return list;
 
   }

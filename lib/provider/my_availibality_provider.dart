@@ -26,6 +26,7 @@ class MyAvailibality extends ChangeNotifier{
   bool loadData=true;
 
   int myAvailability=-1; //7,6,5,1
+  int oneDay=-1; //7,6,5,1
 
   MyAvailibality(BuildContext context,GlobalKey<ScaffoldState> state){
     mContext=context;
@@ -37,6 +38,7 @@ class MyAvailibality extends ChangeNotifier{
 
   void selectMyAvailability(OptionModel value){
     selectedType=value;
+    oneDay=-1;
     int pos=value.position;
     if(pos==0){
       myAvailability=7;
@@ -70,8 +72,12 @@ class MyAvailibality extends ChangeNotifier{
       myAvailability=1;
       for(AvailibalityModel day in avalibleArray){
         day.isSelected=false;
-        day.startTime=startTime;
-        day.endTime=endTime;
+        day.startTime='';
+        day.endTime='';
+      }
+      if(oneDay!=-1){
+        avalibleArray[oneDay].startTime=startTime;
+        avalibleArray[oneDay].endTime=endTime;
       }
     }
 
@@ -83,6 +89,7 @@ class MyAvailibality extends ChangeNotifier{
 
        try{
           String response=await ApiClient.post(ApiClient.paGetDoctorAvailability, mContext,state: _scaffoldKey);
+          print(response);
           if(!AppUtils.isEmpty(response)){
               var js=json.decode(response);
               var data=(js['DaytimeDetails'] as List).map((i)=>TimeModel.fromJSON(i)).toList();
@@ -90,55 +97,55 @@ class MyAvailibality extends ChangeNotifier{
                 myAvailability++;
                 if(data[0].sundayTiming!=null && data[0].sundayTiming!='Not Available'){
                   var s=data[0].sundayTiming.split("-");
+                  avalibleArray[6].startTime=s[0];
+                  avalibleArray[6].endTime=s[1];
+                  avalibleArray[6].isSelected=true;
+                  myAvailability++;
+                }
+                if(data[0].mondayTiming!=null && data[0].mondayTiming!='Not Available'){
+                  var s=data[0].mondayTiming.split("-");
                   avalibleArray[0].startTime=s[0];
                   avalibleArray[0].endTime=s[1];
                   avalibleArray[0].isSelected=true;
                   myAvailability++;
                 }
-                if(data[0].mondayTiming!=null && data[0].mondayTiming!='Not Available'){
-                  var s=data[0].mondayTiming.split("-");
+                if(data[0].tuesdayTiming!=null && data[0].tuesdayTiming!='Not Available'){
+                  var s=data[0].tuesdayTiming.split("-");
                   avalibleArray[1].startTime=s[0];
                   avalibleArray[1].endTime=s[1];
                   avalibleArray[1].isSelected=true;
                   myAvailability++;
                 }
-                if(data[0].tuesdayTiming!=null && data[0].tuesdayTiming!='Not Available'){
-                  var s=data[0].tuesdayTiming.split("-");
+
+                if(data[0].wednesdayTiming!=null && data[0].wednesdayTiming!='Not Available'){
+                  var s=data[0].wednesdayTiming.split("-");
                   avalibleArray[2].startTime=s[0];
                   avalibleArray[2].endTime=s[1];
                   avalibleArray[2].isSelected=true;
                   myAvailability++;
                 }
 
-                if(data[0].wednesdayTiming!=null && data[0].wednesdayTiming!='Not Available'){
-                  var s=data[0].wednesdayTiming.split("-");
+                if(data[0].thursdayTiming!=null && data[0].thursdayTiming!='Not Available'){
+                  var s=data[0].thursdayTiming.split("-");
                   avalibleArray[3].startTime=s[0];
                   avalibleArray[3].endTime=s[1];
                   avalibleArray[3].isSelected=true;
                   myAvailability++;
                 }
 
-                if(data[0].thursdayTiming!=null && data[0].thursdayTiming!='Not Available'){
-                  var s=data[0].thursdayTiming.split("-");
+                if(data[0].fridayTiming!=null && data[0].fridayTiming!='Not Available'){
+                  var s=data[0].fridayTiming.split("-");
                   avalibleArray[4].startTime=s[0];
                   avalibleArray[4].endTime=s[1];
                   avalibleArray[4].isSelected=true;
                   myAvailability++;
                 }
 
-                if(data[0].fridayTiming!=null && data[0].fridayTiming!='Not Available'){
-                  var s=data[0].fridayTiming.split("-");
+                if(data[0].saturdayTiming!=null && data[0].saturdayTiming!='Not Available'){
+                  var s=data[0].saturdayTiming.split("-");
                   avalibleArray[5].startTime=s[0];
                   avalibleArray[5].endTime=s[1];
                   avalibleArray[5].isSelected=true;
-                  myAvailability++;
-                }
-
-                if(data[0].saturdayTiming!=null && data[0].saturdayTiming!='Not Available'){
-                  var s=data[0].saturdayTiming.split("-");
-                  avalibleArray[6].startTime=s[0];
-                  avalibleArray[6].endTime=s[1];
-                  avalibleArray[6].isSelected=true;
                   myAvailability++;
                 }
                 setMyAvail();
@@ -160,6 +167,10 @@ class MyAvailibality extends ChangeNotifier{
         selectedType=list[1];
 
       }else if(myAvailability==5){
+        selectedType=list[2];
+
+      }else if(myAvailability==1){
+        oneDay=1;
         selectedType=list[2];
 
       }else{
@@ -205,6 +216,7 @@ class MyAvailibality extends ChangeNotifier{
         "saturdayTime_to": avalibleArray[5].endTime??'',
         "sundayTime_to": avalibleArray[6].endTime??''
       };
+      print(map);
       try{
         String response=await ApiClient.post(ApiClient.paSetDoctorAvailability, mContext,body:map,state: _scaffoldKey);
         if(!AppUtils.isEmpty(response)){
@@ -348,7 +360,26 @@ class MyAvailibality extends ChangeNotifier{
         day.startTime=startTime;
         day.endTime=endTime;
       }
+      if(oneDay!=-1){
+        avalibleArray[oneDay].startTime=startTime;
+        avalibleArray[oneDay].endTime=endTime;
+      }
     }
+  }
+
+  void isSelect(int index) {
+    oneDay=index;
+    for(AvailibalityModel day in avalibleArray){
+      day.isSelected=false;
+      day.startTime='';
+      day.endTime='';
+    }
+    if(oneDay!=-1){
+      avalibleArray[oneDay].startTime=startTime;
+      avalibleArray[oneDay].endTime=endTime;
+      avalibleArray[oneDay].isSelected=true;
+    }
+    notifyListeners();
   }
 
 }
