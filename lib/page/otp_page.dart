@@ -80,7 +80,12 @@ class _OTPScreen extends State<OTPScreen>{
                       children: <Widget>[
 
                         Expanded(child: TextField(
-                          onChanged: model.setOTP,
+                          onChanged: (v){
+                            model.setOTP(v);
+                            if(v.length==4){
+                              FocusScope.of(context).requestFocus(FocusNode());
+                            }
+                          },
                           decoration: InputDecoration(
                             border: InputBorder.none,
                             enabledBorder: InputBorder.none,

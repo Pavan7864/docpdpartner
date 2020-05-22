@@ -5,7 +5,6 @@ import 'package:docpdpartner/utils/app_color.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'investigation _container.dart';
 
 class Patchology extends StatefulWidget{
 

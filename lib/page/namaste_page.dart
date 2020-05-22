@@ -35,7 +35,7 @@ class _NamasteScreen extends State<NamasteScreen>{
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Expanded(child: Container(
-                    margin: const EdgeInsets.only(top: 80,left: 20),
+                    margin: const EdgeInsets.only(top:50 ,left: 20),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -59,7 +59,12 @@ class _NamasteScreen extends State<NamasteScreen>{
                         SizedBox(width: 30,),
                         Expanded(child: TextField(
                             controller: mobileController,
-                             onChanged: model.setMobile,
+                             onChanged: (v){
+                               model.setMobile(v);
+                               if(v.length==10){
+                                 FocusScope.of(context).requestFocus(FocusNode());
+                               }
+                             },
                             decoration: InputDecoration(
                               border: InputBorder.none,
                               enabledBorder: InputBorder.none,
@@ -73,6 +78,7 @@ class _NamasteScreen extends State<NamasteScreen>{
                            textInputAction: TextInputAction.done,
                            maxLength: 10,
                            keyboardType: TextInputType.phone,
+
                         ))
                       ],
                     ),
@@ -120,7 +126,7 @@ class _NamasteScreen extends State<NamasteScreen>{
 
                   Expanded(
                     child: Container(
-                      margin: const EdgeInsets.only(right: 35,bottom: 50),
+                      margin: const EdgeInsets.only(right: 35,bottom: 40),
                       padding: const EdgeInsets.all(5),
                       child: Align(
                         alignment: Alignment.bottomRight,

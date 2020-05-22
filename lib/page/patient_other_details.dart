@@ -12,7 +12,7 @@ import 'package:docpdpartner/model/symptomp_model.dart';
 import 'package:docpdpartner/option_model.dart';
 import 'package:docpdpartner/page/diagnosis_page.dart';
 import 'package:docpdpartner/page/dialog/ZoomImage.dart';
-import 'package:docpdpartner/page/investigation%20_container.dart';
+import 'package:docpdpartner/page/investigation_container.dart';
 import 'package:docpdpartner/page/medicine_page.dart';
 import 'package:docpdpartner/page/popup/bp_dialog.dart';
 import 'package:docpdpartner/page/popup/cancel_appointment_popup.dart';

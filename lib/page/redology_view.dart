@@ -1,6 +1,5 @@
 import 'package:docpdpartner/custom_ui/imageView/TextView.dart';
 import 'package:docpdpartner/model/investigation_model.dart';
-import 'package:docpdpartner/page/investigation%20_container.dart';
 import 'package:docpdpartner/provider/investigation_provider.dart';
 import 'package:docpdpartner/utils/app_color.dart';
 import 'package:flutter/material.dart';
