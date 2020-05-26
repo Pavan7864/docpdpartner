@@ -1,17 +1,25 @@
 import 'dart:async';
 
 import 'package:docpdpartner/custom_ui/imageView/FullImageView.dart';
-import 'package:docpdpartner/custom_ui/imageView/ImageViewSize.dart';
-import 'package:docpdpartner/custom_ui/imageView/TextView.dart';
-import 'package:docpdpartner/routes.dart';
 import 'package:docpdpartner/utils/FirebaseNotifications.dart';
 import 'package:docpdpartner/utils/MyAppPrefrences.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:docpdpartner/page/appointment_page.dart';
+import 'package:docpdpartner/page/edit_profile.dart';
+import 'package:docpdpartner/page/history_container.dart';
+import 'package:docpdpartner/page/my_availability.dart';
+import 'package:docpdpartner/page/namaste_page.dart';
+import 'package:docpdpartner/page/otp_page.dart';
+import 'package:docpdpartner/page/home_page.dart';
+import 'package:docpdpartner/page/patient_detail.dart';
+import 'package:docpdpartner/page/patient_other_details.dart';
+import 'package:docpdpartner/page/profile_menu.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:rxdart/subjects.dart';
+
 
 
 final BehaviorSubject<String> selectNotificationSubject = BehaviorSubject<String>();
@@ -65,7 +73,6 @@ Future onDidReceiveLocalNotification(
           child: Text('Ok'),
           onPressed: () async {
             Navigator.of(context, rootNavigator: true).pop();
-
 
             await Navigator.pushNamed(context, '/DetailsBlog',arguments: {"id" :payload});
 
@@ -186,13 +193,57 @@ class _ThemeSwitcherWidgetState extends State<ThemeSwitcherWidget> {
 
 class MyApp extends StatelessWidget {
 
+
+
+  Route onGenerateRoute(RouteSettings settings) {
+    Route page;
+    switch (settings.name) {
+      case "/":
+        page = CupertinoPageRoute(builder: (context) => Splash());
+        break;
+      case "/NamasteScreen":
+        page = CupertinoPageRoute(builder: (context) => NamasteScreen());
+        break;
+      case "/OTPScreen":
+        page = CupertinoPageRoute(builder: (context) => OTPScreen());
+        break;
+      case "/HomePage":
+        page = CupertinoPageRoute(builder: (context) => HomePage());
+        break;
+      case "/ProfileMenu":
+        page = CupertinoPageRoute(builder: (context) => ProfileMenu());
+        break;
+      case "/AppointmentScreen":
+        page = CupertinoPageRoute(builder: (context) => AppointmentScreen());
+        break;
+      case "/PatientDetails":
+        page = CupertinoPageRoute(builder: (context) => PatientDetails());
+        break;
+      case "/EditProfile":
+        page = CupertinoPageRoute(builder: (context) => EditProfile());
+        break;
+      case "/HistoryContainer":
+        page = CupertinoPageRoute(builder: (context) => HistoryContainer());
+        break;
+      case "/MyAvailability":
+        page = CupertinoPageRoute(builder: (context) => MyAvailability());
+        break;
+      case "/PatientOtherDetails":
+        page = CupertinoPageRoute(builder: (context) => PatientOtherDetails());
+        break;
+    }
+    return page;
+  }
+
+
   @override
   Widget build(BuildContext context) {
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeSwitcher.of(context).themeData,
-      routes: Routes.getAll(),
+    //  routes: Routes.getAll(),
+      onGenerateRoute: onGenerateRoute,
       initialRoute: "/",
 
     );

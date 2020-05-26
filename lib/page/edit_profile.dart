@@ -643,6 +643,7 @@ class _EditProfile extends State<EditProfile>{
   Future updateImage(File file,String fileType) async {
 
     setState(() {
+      type=type;
       isLoaded=true;
     });
     Uri  uri = Uri.parse(ApiClient.API_URL+ApiClient.paDoctorImageUpload);

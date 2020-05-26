@@ -97,7 +97,7 @@ class _OTPScreen extends State<OTPScreen>{
                           ),
                           style: TextStyle(color: Theme.of(context).primaryColor,fontSize: 20,letterSpacing: 35,fontWeight: FontWeight.w600),
                           textInputAction: TextInputAction.done,
-                          keyboardType: TextInputType.phone,
+                          keyboardType: TextInputType.numberWithOptions(signed: true,decimal: true),
                           maxLength: 4,
                           maxLengthEnforced: true,
                           textAlign: TextAlign.center,

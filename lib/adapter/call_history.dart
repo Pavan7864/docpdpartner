@@ -30,7 +30,7 @@ class CallHistoryAdapter extends StatelessWidget{
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      TextView(model.userName,line: 1,colors: Theme.of(context).primaryColor,size: 18,weight: FontWeight.w500,),
+                      TextView(model.userName??'',line: 1,colors: Theme.of(context).primaryColor,size: 18,weight: FontWeight.w500,),
                       Container(
                         margin: const EdgeInsets.only(top: 5,bottom: 2),
                         child: Row(
