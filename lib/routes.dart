@@ -15,21 +15,21 @@ import 'package:flutter/material.dart';
 
 class Routes{
 
-  static final Map<String, WidgetBuilder> _routes = {
-    "/": (context) => Splash(),
-    "/NamasteScreen": (context) => NamasteScreen(),
-    "/OTPScreen": (context) => OTPScreen(),
-    "/HomePage": (context) => HomePage(),
-    "/ProfileMenu": (context) => ProfileMenu(),
-    "/AppointmentScreen": (context) => AppointmentScreen(),
-    "/PatientDetails": (context) => PatientDetails(),
-    "/EditProfile": (context) => EditProfile(),
-    "/HistoryContainer": (context) => HistoryContainer(),
-    "/MyAvailability": (context) => MyAvailability(),
-    "/PatientOtherDetails": (context) => PatientOtherDetails(),
-//    "/AddMedicineScreen": (context) => AddMedicineScreen(),
-
-  };
-  static Map<String, WidgetBuilder> getAll() => _routes;
+//  static final Map<String, WidgetBuilder> _routes = {
+//    "/": (context) => Splash(),
+//    "/NamasteScreen": (context) => NamasteScreen(),
+//    "/OTPScreen": (context) => OTPScreen(),
+//    "/HomePage": (context) => HomePage(),
+//    "/ProfileMenu": (context) => ProfileMenu(),
+//    "/AppointmentScreen": (context) => AppointmentScreen(),
+//    "/PatientDetails": (context) => PatientDetails(),
+//    "/EditProfile": (context) => EditProfile(),
+//    "/HistoryContainer": (context) => HistoryContainer(),
+//    "/MyAvailability": (context) => MyAvailability(),
+//    "/PatientOtherDetails": (context) => PatientOtherDetails(),
+////    "/AddMedicineScreen": (context) => AddMedicineScreen(),
+//
+//  };
+//  static Map<String, WidgetBuilder> getAll() => _routes;
 
 }

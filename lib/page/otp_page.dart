@@ -7,7 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class OTPScreen extends StatefulWidget{
-
+  final Object arguments;
+  OTPScreen(this.arguments);
   @override
   _OTPScreen createState()=>_OTPScreen();
 }
@@ -19,7 +20,7 @@ class _OTPScreen extends State<OTPScreen>{
 
   @override
   Widget build(BuildContext context) {
-    final  Map<String, Object> data = ModalRoute.of(context).settings.arguments;
+    final  Map<String, Object> data = widget.arguments;
     mobile=data['mobile'].toString();
    _app= LoginProvider(context,mobile);
 

@@ -118,7 +118,6 @@ class _MyAvailability extends State<MyAvailability> {
                 ):ListView.builder(
                     itemCount: model.avalibleArray.length,
                     shrinkWrap: true,
-                    physics: NeverScrollableScrollPhysics(),
                     itemBuilder: (context,index){
                       var day=model.avalibleArray[index];
                       return Container(

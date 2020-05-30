@@ -28,6 +28,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class PatientOtherDetails extends StatefulWidget{
+  final Object arguments;
+  PatientOtherDetails(this.arguments);
+
 
   @override
   _PatientOtherDetails createState()=>_PatientOtherDetails();
@@ -50,7 +53,7 @@ class _PatientOtherDetails extends State<PatientOtherDetails> {
 
      @override
   Widget build(BuildContext context) {
-       final  Map<String, Object> data = ModalRoute.of(context).settings.arguments;
+       final  Map<String, Object> data = widget.arguments;
        appointmentModel=AppointmentModel.fromJSON(data);
        _app=PatientAppointmentProvider(context);
        if(!AppUtils.isEmpty(appointmentModel.MedicalHistory)){

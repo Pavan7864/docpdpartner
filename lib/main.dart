@@ -197,6 +197,7 @@ class MyApp extends StatelessWidget {
 
   Route onGenerateRoute(RouteSettings settings) {
     Route page;
+    final arguments = settings.arguments;
     switch (settings.name) {
       case "/":
         page = CupertinoPageRoute(builder: (context) => Splash());
@@ -205,7 +206,7 @@ class MyApp extends StatelessWidget {
         page = CupertinoPageRoute(builder: (context) => NamasteScreen());
         break;
       case "/OTPScreen":
-        page = CupertinoPageRoute(builder: (context) => OTPScreen());
+        page = CupertinoPageRoute(builder: (context) => OTPScreen(arguments));
         break;
       case "/HomePage":
         page = CupertinoPageRoute(builder: (context) => HomePage());
@@ -217,7 +218,7 @@ class MyApp extends StatelessWidget {
         page = CupertinoPageRoute(builder: (context) => AppointmentScreen());
         break;
       case "/PatientDetails":
-        page = CupertinoPageRoute(builder: (context) => PatientDetails());
+        page = CupertinoPageRoute(builder: (context) => PatientDetails(arguments));
         break;
       case "/EditProfile":
         page = CupertinoPageRoute(builder: (context) => EditProfile());
@@ -229,7 +230,7 @@ class MyApp extends StatelessWidget {
         page = CupertinoPageRoute(builder: (context) => MyAvailability());
         break;
       case "/PatientOtherDetails":
-        page = CupertinoPageRoute(builder: (context) => PatientOtherDetails());
+        page = CupertinoPageRoute(builder: (context) => PatientOtherDetails(arguments));
         break;
     }
     return page;

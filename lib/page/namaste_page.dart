@@ -13,11 +13,9 @@ class NamasteScreen extends StatefulWidget{
 class _NamasteScreen extends State<NamasteScreen>{
 
   var mobileController = new TextEditingController();
-  FocusNode _nodeText1 = FocusNode();
+  FocusNode mobile = FocusNode();
   GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
-
-
-
+  
 
 
     @override
@@ -63,6 +61,7 @@ class _NamasteScreen extends State<NamasteScreen>{
                           SizedBox(width: 30,),
                           Expanded(child: TextField(
                               controller: mobileController,
+                               focusNode: mobile,
                                onChanged: (v){
                                  model.setMobile(v);
                                  if(v.length==10){
