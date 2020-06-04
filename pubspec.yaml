@@ -38,6 +38,7 @@ dependencies:
   firebase_remote_config: ^0.3.0+3
   image_picker: ^0.6.6+1
   camera: ^0.5.8+1
+  keyboard_actions: ^3.2.1+1
 
 dev_dependencies:
   flutter_test:
