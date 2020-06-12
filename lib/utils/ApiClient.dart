@@ -9,8 +9,8 @@ import 'dart:io' show Platform;
 
 class ApiClient{
    static bool isUpdated=false;
-  static String BASE_URL="https://services.docopd.com";
-  static String imageBaseUrl="https://services.docopd.com/";
+  static String BASE_URL="";
+  static String imageBaseUrl="";
   static String API_URL="$BASE_URL/api/";
 
   static String login='T2DDoctorLogin';
